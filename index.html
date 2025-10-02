@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="mn"> 
+<head> 
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+  <title>NBA Топ Багууд</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <style> 
+
+    body {
+      font-family: 'Roboto', sans-serif; 
+      margin: 0; padding: 0;
+      background: rgba(234, 152, 152, 0.7);
+      color: #fff;
+    }
+
+   
+    header {
+      background: rgba(234, 152, 152, 0.7); 
+      padding: 20px; 
+      text-align: center; 
+    }
+    header h1 { margin: 0; } 
+    header p { margin: 8px 0 0; } 
+
+    
+    .teams {
+      padding: 40px 20px; 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+      /* Дэлгэцэнд тааруулж автоматаар баганыг тохируулна */
+      gap: 25px; 
+    }
+
+    .card {
+      background: #fff; 
+      color: #333; 
+      border-radius: 15px; 
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3); 
+      overflow: hidden;
+      text-align: center; 
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    }
+    .card:hover {
+      transform: translateY(-10px) scale(1.03); 
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5); 
+    }
+    .card img {
+      width: 100%;
+      height: 230px; 
+      object-fit: cover; 
+    }
+    .card-content {
+      padding: 12px; 
+    }
+    .card-content h3 {
+      margin: 8px 0 5px; 
+      font-size: 1.1rem; 
+      color: #1d428a; 
+    }
+    .card-content p {
+      margin: 3px 0; 
+      font-size: 0.9rem; 
+      color: #444; 
+    }
+
+   
+    .hidden { display: none; } 
+
+    h2 {
+      text-align: center;
+      margin-bottom: 15px; 
+    }
+
+    
+    .players-info {
+      max-width: 800px; 
+      margin: 0 auto; 
+      background: rgba(255,255,255,0.9); 
+      color: #000; 
+      border-radius: 12px; 
+      padding: 20px; 
+    }
+    .player {
+      display: flex;
+      border-bottom: 1px solid #ccc; 
+      align-items: center;
+      padding: 10px 0; 
+    }
+    .player:last-child { border-bottom: none; } 
+
+    .player img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      margin-right: 15px;
+      object-fit: cover;
+      border: 2px solid #1d428a;
+    }
+    .player h3 {
+      margin: 0; 
+      color: #1d428a; 
+    }
+    .player p {
+      margin: 2px 0; 
+      font-size: 1rem; 
+    }
+
+    .back-btn {
+      background: #1d428a; 
+      color: #fff; 
+      padding: 10px 20px;
+      border-radius: 8px; 
+      cursor: pointer; 
+      margin: 20px; 
+      display: inline-block; 
+      transition: background 0.3s; 
+    }
+    .back-btn:hover { background: #c8102e; } 
+
+    footer {
+      background: rgba(243, 144, 144, 0.7); 
+      text-align: center; 
+      padding: 20px; 
+      margin-top: 30px; 
+      font-size: 0.9rem; 
+    }
+
+  </style> 
+</head>
+
+<body> 
+  
+  <header>
+    <h1>🏀 NBA Топ 3 Баг</h1> <!-- Гарчиг -->
+    <p>Баг дээр дараад гарааны 5 тоглогчийг үзнэ үү</p> <!-- Заавар -->
+  </header>
+
+  
+  <section id="team-section" class="teams">
+
+    
+    <div class="card" onclick="showTeam('lakers')"> 
+      <img src="https://cdn.nba.com/logos/nba/1610612747/primary/L/logo.svg" alt="Lakers"> 
+      <div class="card-content">
+        <h3>Los Angeles Lakers</h3>
+        <p>NBA-ийн түүхэн хамгийн алдартай багуудын нэг</p>
+      </div>
+    </div>
+
+   
+    <div class="card" onclick="showTeam('celtics')">
+      <img src="https://cdn.nba.com/logos/nba/1610612738/primary/L/logo.svg" alt="Celtics">
+      <div class="card-content">
+        <h3>Boston Celtics</h3>
+        <p>17 удаагийн аварга, Домогт баг</p>
+      </div>
+    </div>
+
+    
+    <div class="card" onclick="showTeam('bucks')">
+      <img src="https://cdn.nba.com/logos/nba/1610612749/primary/L/logo.svg" alt="Bucks">
+      <div class="card-content">
+        <h3>Milwaukee Bucks</h3>
+        <p>Грек мангас Giannis-аар алдартай баг</p>
+      </div>
+    </div>
+
+  </section>
+
+  
+  <section id="lakers" class="players hidden"> 
+    <span class="back-btn" onclick="goBack()">← Буцах</span> 
+    <h2>Los Angeles Lakers - Гарааны 5 тамирчин</h2> 
+    <div class="players-info"> 
+        <div class="player"><img src="https://cdn.nba.com/headshots/nba/latest/260x190/2544.png"><div><h3>LeBron James</h3><p>Forward | Нас: 39</p><p>NBA аварга: 4</p></div></div>
+      <div class="player"><img src="https://cdn.nba.com/headshots/nba/latest/260x190/203076.png"><div><h3>Anthony Davis</h3><p>Forward-Center | Нас: 31</p><p>NBA аварга: 1</p></div></div>
+      <div class="player"><img src="https://cdn.nba.com/headshots/nba/latest/260x190/1631105.png"><div><h3>Courtney Lee</h3><p>Guard | Нас: 26</p><p>3pt мэргэжилтэн</p></div></div>
+      <div class="player"><img src="https://cdn.nba.com/headshots/nba/latest/260x190/1630647.png"><div><h3>D'Angelo Russell</h3><p>Guard | Нас: 28</p><p>Playmaker</p></div></div>
+      <div class="player"><img src="https://cdn.nba.com/headshots/nba/latest/260x190/1626179.png"><div><h3>Jarred Vanderbilt</h3><p>Forward | Нас: 25</p><p>Хамгаалалтын хүч</p></div></div>
+    </div>
+  </section>
+
+ 
+  <section id="celtics" class="players hidden">
+    <span class="back-btn" onclick="goBack()">← Буцах</span>
+    <h2>Boston Celtics - Гарааны 5 тамирчин</h2>
+    <div class="players-info">
+      <div class="player"><img src="https://cdn.nba.com/headshots/nba/latest/260x190/1628369.png"><div><h3>Jayson Tatum</h3><p>Forward | Нас: 26</p><p>All-Star: 5</p></div></div>
+      <div class="player"><img src="https://cdn.nba.com/headshots/nba/latest/260x190/1627759.png"><div><h3>Jaylen Brown</h3><p>Guard-Forward | Нас: 28</p><p>2022 Finals MVP</p></div></div>
+      <div class="player"><img src="https://cdn.nba.com/headshots/nba/latest/260x190/1629680.png"><div><h3>Jrue Holiday</h3><p>Guard | Нас: 34</p><p>All-Defensive Team</p></div></div>
+      <div class="player"><img src="https://cdn.nba.com/headshots/nba/latest/260x190/203935.png"><div><h3>Derrick White</h3><p>Guard | Нас: 30</p><p>Шилдэг хамгаалагч</p></div></div>
+      <div class="player"><img src="https://cdn.nba.com/headshots/nba/latest/260x190/202681.png"><div><h3>Kyrie Irving</h3><p>Center | Нас: 38</p><p>Туршлагатай ахлагч</p></div></div>
+    </div>
+  </section>
+
+  
+  <section id="bucks" class="players hidden">
+    <span class="back-btn" onclick="goBack()">← Буцах</span>
+    <h2>Milwaukee Bucks - Гарааны 5 тамирчин</h2>
+    <div class="players-info">
+      <div class="player"><img src="https://cdn.nba.com/headshots/nba/latest/260x190/203507.png"><div><h3>Giannis Antetokounmpo</h3><p>Forward | Нас: 29</p><p>NBA аварга: 1</p></div></div>
+      <div class="player"><img src="https://cdn.nba.com/headshots/nba/latest/260x190/1626164.png"><div><h3>Devin Booker</h3><p>Guard | Нас: 34</p><p>Clutch shooter</p></div></div>
+      <div class="player"><img src="https://cdn.nba.com/headshots/nba/latest/260x190/203114.png"><div><h3>Khris Middleton</h3><p>Forward | Нас: 33</p><p>All-Star: 3</p></div></div>
+      <div class="player"><img src="https://cdn.nba.com/headshots/nba/latest/260x190/1628981.png"><div><h3>Brook Lopez</h3><p>Center | Нас: 36</p><p>Defensive anchor</p></div></div>
+      <div class="player"><img src="https://cdn.nba.com/headshots/nba/latest/260x190/1627741.png"><div><h3>Bobby Portis</h3><p>Forward-Center | Нас: 29</p><p>Энерги, сэлгээний лидер</p></div></div>
+    </div>
+  </section>
+
+  <footer>
+    | NBA Fan | 
+  </footer>
+
+  
+  <script>
+    function showTeam(teamId) {
+      document.getElementById("team-section").classList.add("hidden");
+      document.getElementById(teamId).classList.remove("hidden"); 
+    }
+
+    function goBack() {
+      document.getElementById("team-section").classList.remove("hidden"); 
+      document.querySelectorAll(".players").forEach(sec => sec.classList.add("hidden"));
+    }
+  </script>
+
+</body>
+</html>
